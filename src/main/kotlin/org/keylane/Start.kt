@@ -7,6 +7,11 @@ import io.ktor.response.respondText
 import io.ktor.routing.*
 import kotlinx.html.*
 
+
+fun main(args : Array<String>) {
+    JenkinsIO().getJenkinsNodes()
+}
+
 fun Application.main() {
     install(DefaultHeaders)
 //    install(CallLogging)
@@ -23,7 +28,7 @@ fun Application.main() {
             }
         }
         get("/test") {
-            call.respondText("Hello world")
+            call.respondText(JenkinsIO().getJenkinsNodes().toString())
         }
     }
 }
